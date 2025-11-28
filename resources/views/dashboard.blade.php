@@ -26,7 +26,7 @@
         margin-top: 40px;
         margin-bottom: 40px;
         position: relative;
-        height: 610px;
+        height: 650px;
         box-shadow: 0 2px 6px rgba(0,0,0,0.08);
 
         margin-top: var(--hero-margin-top) !important;
@@ -206,47 +206,52 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 {{-- BARANG HILANG --}}
-<div class="container mx-auto px-6">
+<div class="max-w-7xl mx-auto px-6 mt-10">
     <h2 class="section-title">Barang Hilang</h2>
 
     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 mt-4">
+        @foreach($categories as $cat)
+            <div class="kategori-card bg-[#F5EDE3] rounded-xl shadow-sm overflow-hidden">
 
-        @foreach($lostCategories as $cat)
-        <div class="kategori-card mx-auto">
-            <div class="kategori-image"></div>
-            <div class="kategori-info">
-                <div class="kategori-title">{{ $cat['category'] }}</div>
+                <div class="kategori-image h-28 bg-[#EDE3D6]"></div>
 
-                <a href="{{ route('category.show', $cat['slug']) }}" class="kategori-sub hover:text-[#735353]">
-                    Selengkapnya…
-                </a>
+                <div class="p-3">
+                    <div class="font-semibold">{{ $cat['name'] }}</div>
+
+                    <a href="{{ route('kategori.hilang', $cat['slug']) }}"
+                    class="text-sm text-gray-500 hover:text-[#735353]">
+                        Selengkapnya…
+                    </a>
+                </div>
 
             </div>
-        </div>
         @endforeach
-
     </div>
 </div>
 
 
+
 {{-- BARANG DITEMUKAN --}}
-<div class="container mx-auto px-6 mt-12">
-    <h2 class="section-title">Barang Ditemukan</h2>
+<div class="max-w-7xl mx-auto px-6 mt-14">
+    <h2 class="section-title mt-10">Barang Ditemukan</h2>
 
-    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 mt-4">
+        @foreach($categories as $cat)
+            <div class="kategori-card bg-[#F5EDE3] rounded-xl shadow-sm overflow-hidden">
 
-        @foreach($foundCategories as $cat)
-        <div class="kategori-card mx-auto">
-            <div class="kategori-image"></div>
-            <div class="kategori-info">
-                <div class="kategori-title">{{ $cat['category'] }}</div>
-                <a href="{{ route('category.show', $cat['slug']) }}" class="kategori-sub hover:text-[#735353]">
-                    Selengkapnya…
-                </a>
+                <div class="kategori-image h-28 bg-[#EDE3D6]"></div>
+
+                <div class="p-3">
+                    <div class="font-semibold">{{ $cat['name'] }}</div>
+
+                    <a href="{{ route('kategori.ditemukan', $cat['slug']) }}"
+                    class="text-sm text-gray-500 hover:text-[#735353]">
+                        Selengkapnya…
+                    </a>
+                </div>
+
             </div>
-        </div>
         @endforeach
-
     </div>
 </div>
 

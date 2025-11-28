@@ -17,4 +17,10 @@ class LostItem extends Model
         'user_id',
         'image_path'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
 }

@@ -25,6 +25,12 @@ class User extends Authenticatable
         'password',
     ];
 
+    public function lostItems()
+    {
+        return $this->hasMany(LostItem::class);
+    }
+
+
     /**
      * The attributes that should be hidden for serialization.
      *

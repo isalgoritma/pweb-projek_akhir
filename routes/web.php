@@ -1,55 +1,57 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LostItemController;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LostItemController;
 
+// LANDING PAGE
+Route::view('/', 'welcome')->name('landing');
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+// AUTH
+Route::get('/login', fn()=>view('auth.login'))->name('login');
+Route::post('/login-proses', [AuthController::class, 'loginProses'])->name('login.proses');
 
-// Simple skeleton auth views
-Route::get('/login', function(){ return view('auth.login'); })->name('login');
-Route::get('/register', function(){ return view('auth.register'); })->name('register');
+Route::get('/register', fn()=>view('auth.register'))->name('register');
+Route::post('/register-proses', [AuthController::class, 'registerProses'])->name('register.proses');
 
-// Dashboard (example)
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+// Barang Hilang / Ditemukan per kategori
+Route::get('/barang-hilang/{slug}', [LostItemController::class, 'hilangKategori'])
+     ->name('kategori.hilang');
 
-// Resource routes for lost & found items (CRUD)
+Route::get('/barang-ditemukan/{slug}', [LostItemController::class, 'ditemukanKategori'])
+     ->name('kategori.ditemukan');
+
+Route::get('/barang-hilang-ditemukan', [LostItemController::class, 'allItems'])
+    ->name('lost.found.all');
+
+Route::get('/barang-hilang-ditemukan/{kategori}', [LostItemController::class, 'allItems'])
+    ->name('lost.found.category');
+
+Route::get('/profile', function () {
+    return view('profile');
+})->name('profile')->middleware('auth');
+
+Route::get('/profile/detailprofile', function () {
+    return view('profile.detailprofile');
+})->name('profile.detailprofile')->middleware('auth');
+
+Route::get('/found/create', [LostItemController::class, 'createFound'])->name('found.create');
+
+Route::get('/lost/create', [LostItemController::class, 'create'])->name('lost.create');
+
+Route::get('/lost/deletepage', [LostItemController::class, 'deletePage'])
+    ->name('lost.deletePage')
+    ->middleware('auth');
+
 Route::resource('lost', LostItemController::class);
 
-Route::post('/login-proses', [AuthController::class, 'loginProses'])->name('login.proses');
-Route::post('/register-proses', [AuthController::class, 'registerProses'])->name('register.proses');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
-Route::get('/kategori/{slug}', function ($slug) {
-    return "Halaman kategori: $slug";
-})->name('category.show');
-Route::middleware('auth')->get('/dashboard', function () {
 
-    $lostCategories = [
-        ['category' => 'Elektronik', 'count' => 12, 'image' => asset('images/lost/elektronik.svg'), 'slug' => 'elektronik'],
-        ['category' => 'Pakaian', 'count' => 8, 'image' => asset('images/lost/pakaian.svg'), 'slug' => 'pakaian'],
-        ['category' => 'Aksesoris', 'count' => 15, 'image' => asset('images/lost/aksesoris.svg'), 'slug' => 'aksesoris'],
-        ['category' => 'Dokumen', 'count' => 5, 'image' => asset('images/lost/dokumen.svg'), 'slug' => 'dokumen'],
-        ['category' => 'Tas & Dompet', 'count' => 9, 'image' => asset('images/lost/tas.svg'), 'slug' => 'tas-dompet'],
-    ];
+// DASHBOARD
+Route::middleware('auth')
+    ->get('/dashboard', [DashboardController::class, 'index'])
+    ->name('dashboard');
 
-    $foundCategories = [
-        ['category' => 'Elektronik', 'count' => 18, 'image' => asset('images/found/elektronik.svg'), 'slug' => 'elektronik'],
-        ['category' => 'Pakaian', 'count' => 10, 'image' => asset('images/found/pakaian.svg'), 'slug' => 'pakaian'],
-        ['category' => 'Aksesoris', 'count' => 22, 'image' => asset('images/found/aksesoris.svg'), 'slug' => 'aksesoris'],
-        ['category' => 'Dokumen', 'count' => 7, 'image' => asset('images/found/dokumen.svg'), 'slug' => 'dokumen'],
-        ['category' => 'Tas & Dompet', 'count' => 14, 'image' => asset('images/found/tas.svg'), 'slug' => 'tas-dompet'],
-    ];
-
-
-    return view('dashboard', compact('lostCategories', 'foundCategories'));
-})->name('dashboard');
-
-
-
-
-
+// LOST & FOUND CRUD
+Route::resource('lost', LostItemController::class);

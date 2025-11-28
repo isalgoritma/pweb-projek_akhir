@@ -1,0 +1,68 @@
+/* ====== PROFILE PAGE STYLING ====== */
+
+.profile-container {
+    max-width: 900px;
+    margin: 40px auto;       /* jarak dari header */
+    padding: 0 20px;
+}
+
+.profile-card {
+    background: #f4e9db;     /* krem */
+    padding: 25px 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.profile-icon {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto 10px auto;
+    color: #735353;
+}
+
+.profile-username {
+    font-size: 22px;
+    font-weight: 600;
+    color: #735353;
+}
+
+.profile-email {
+    font-size: 14px;
+    color: #735353;
+    opacity: 0.75;
+}
+
+/* ===== Buttons ===== */
+.profile-menu-button {
+    background: #735353;
+    color: white;
+    width: 100%;
+    padding: 16px;
+    border-radius: 40px;
+    font-size: 18px;
+    margin-bottom: 18px;
+    text-align: center;
+    transition: 0.2s;
+}
+
+.profile-menu-button:hover {
+    background: #5b4343;
+    cursor: pointer;
+}
+
+.profile-btn {
+        background: #735353;
+        color: #f4eadf;
+        font-weight: 600;
+        padding: 18px;
+        border-radius: 40px;
+        display: block;
+        text-align: center;
+        font-size: 20px;
+        transition: 0.2s;
+    }
+    .profile-btn:hover {
+        background: #5e4545;
+    }

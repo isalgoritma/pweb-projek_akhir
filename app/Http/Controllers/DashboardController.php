@@ -1,60 +1,32 @@
-public function index()
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
+
+class DashboardController extends Controller
 {
-    $lostCategories = [
-        [
-            'category' => 'Elektronik',
-            'count' => 12,
-            'slug' => 'elektronik',
-        ],
-        [
-            'category' => 'Pakaian',
-            'count' => 8,
-            'slug' => 'pakaian',
-        ],
-        [
-            'category' => 'Aksesoris',
-            'count' => 15,
-            'slug' => 'aksesoris',
-        ],
-        [
-            'category' => 'Dokumen',
-            'count' => 5,
-            'slug' => 'dokumen',
-        ],
-        [
-            'category' => 'Tas & Dompet',
-            'count' => 9,
-            'slug' => 'tas-dompet',
-        ],
-    ];
+    public function index()
+    {
+        $user = Auth::user();
 
-    $foundCategories = [
-        [
-            'category' => 'Elektronik',
-            'count' => 18,
-            'slug' => 'elektronik',
-        ],
-        [
-            'category' => 'Pakaian',
-            'count' => 10,
-            'slug' => 'pakaian',
-        ],
-        [
-            'category' => 'Aksesoris',
-            'count' => 22,
-            'slug' => 'aksesoris',
-        ],
-        [
-            'category' => 'Dokumen',
-            'count' => 7,
-            'slug' => 'dokumen',
-        ],
-        [
-            'category' => 'Tas & Dompet',
-            'count' => 14,
-            'slug' => 'tas-dompet',
-        ],
-    ];
+        $categories = [
+            'Elektronik',
+            'Kendaraan',
+            'Aksesoris',
+            'Dokumen',
+            'Lainnya'
+        ];
 
-    return view('dashboard', compact('lostCategories', 'foundCategories'));
+        // convert ke format slug-ready
+        $categories = collect($categories)->map(function ($cat) {
+            return [
+                'name' => $cat,
+                'slug' => Str::slug($cat),
+            ];
+        });
+
+        return view('dashboard', compact('user', 'categories'));
+    }
 }
