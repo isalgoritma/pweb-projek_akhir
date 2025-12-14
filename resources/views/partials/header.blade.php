@@ -27,7 +27,17 @@
             <div class="flex items-center space-x-2 px-2 py-2 bg-white rounded-full shadow-sm">
 
                 {{-- Ikon Akun --}}
-                <a href="{{ route('profile') }}"
+                <a href="
+                {{ Auth::user()->role === 'admin' && Route::has('admin.profile')
+                    ? route('admin.profile')
+                    : (Route::has('profile') ? route('profile') : '#') }}">
+                    Profil
+                </a>
+
+                <a href="
+                {{ Auth::user()->role === 'admin' && Route::has('admin.profile')
+                    ? route('admin.profile')
+                    : (Route::has('profile') ? route('profile') : '#') }}"
                     class="flex items-center space-x-2 px-4 py-2 rounded-full shadow-sm
                     {{ request()->is('profile') ? 'bg-[#e8d8c8]' : 'bg-white' }}">
 
@@ -46,7 +56,6 @@
                     </div>
                 </a>
             </div>
-
 
             <form action="{{ route('logout') }}" method="POST">
                 @csrf

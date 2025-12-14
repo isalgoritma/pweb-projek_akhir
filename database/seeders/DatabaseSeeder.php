@@ -3,8 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,13 +16,24 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // Seed user default
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        // ADMIN DEFAULT (AUTO LOGIN)
+        User::updateOrCreate(
+            ['username' => 'admin'],
+            [
+                'name'     => 'Administrator',
+                'email'    => 'admin@universe.com',
+                'password' => Hash::make('admin123'),
+                'role'     => 'admin',
+                'status'   => 'aktif'
+            ]
+        );
 
-        // Panggil seeder LostItemSeeder
+        // // USER DUMMY (TIDAK DIHAPUS)
+        // User::factory()->create([
+        //     'name'  => 'Test User',
+        //     'email' => 'test@example.com',
+        // ]);
+
         $this->call([
             LostItemSeeder::class,
         ]);
