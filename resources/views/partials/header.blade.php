@@ -3,22 +3,27 @@
 
         <div class="text-2xl font-bold" style="font-family: 'Georgia', serif; color:#735353;">
             UniVerse
+            @if(auth()->user()->role === 'admin')
+                <span class="text-sm font-normal">(Admin)</span>
+            @endif
         </div>
 
         <nav class="hidden md:flex items-center space-x-8">
-            <a href="/dashboard"
-                class="font-medium text-[#735353] pb-1 border-b-2
-                {{ request()->is('dashboard') ? 'border-[#735353]' : 'border-transparent hover:border-[#735353]' }}">
-                Utama
-            </a>
+            @if(auth()->user()->role === 'user')
+                <a href="/dashboard"
+                    class="font-medium text-[#735353] pb-1 border-b-2
+                    {{ request()->is('dashboard') ? 'border-[#735353]' : 'border-transparent hover:border-[#735353]' }}">
+                    Utama
+                </a>
 
-           <a href="{{ route('lost.found.all') }}"
-                class="font-medium text-[#735353] pb-1 border-b-2
-                {{ request()->is('barang-hilang-ditemukan') || request()->is('barang-hilang-ditemukan/*')
-                    ? 'border-[#735353]'
-                    : 'border-transparent hover:border-[#735353]' }}">
-                Barang Hilang & Ditemukan
-            </a>
+                <a href="{{ route('lost.found.all') }}"
+                    class="font-medium text-[#735353] pb-1 border-b-2
+                    {{ request()->is('barang-hilang-ditemukan') || request()->is('barang-hilang-ditemukan/*')
+                        ? 'border-[#735353]'
+                        : 'border-transparent hover:border-[#735353]' }}">
+                    Barang Hilang & Ditemukan
+                </a>
+            @endif
 
         </nav>
 
@@ -42,19 +47,20 @@
                         <div class="text-sm font-semibold text-[#735353]">
                             {{ Auth::user()->username }}
                         </div>
-                        <div class="text-xs text-[#735353]">Aktif</div>
+                        @if(auth()->user()->role !== 'admin')
+                            <div class="text-xs text-[#735353]">Aktif</div>
+                        @endif
                     </div>
                 </a>
             </div>
 
 
-            <form action="{{ route('logout') }}" method="POST">
-                @csrf
-                <button class="px-4 py-2 rounded-lg font-medium text-white"
-                        style="background:#735353;">
-                    Logout
-                </button>
-            </form>
+            <a href="{{ route('logout') }}"
+                class="px-4 py-2 rounded-lg font-medium text-white"
+                style="background:#735353;">
+                Logout
+            </a>
+
 
         </div>
 

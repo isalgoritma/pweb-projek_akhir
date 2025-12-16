@@ -1,9 +1,7 @@
-/* ---- BACKGROUND HALAMAN PUTIH ---- */
 body {
     background: #ffffff !important;
 }
 
-/* ---- CARD UTAMA FORM ---- */
 .form-container {
     max-width: 1100px;
     margin: 40px auto;
@@ -11,11 +9,9 @@ body {
     padding: 30px;
     border-radius: 20px;
 
-    /* Shadow lembut agar form terlihat menonjol */
     box-shadow: 0 4px 20px rgba(0,0,0,0.08);
 }
 
-/* ---- FORM TITLE BOX ---- */
 .form-title-box {
     background: #f2e5d3;
     padding: 25px;
@@ -24,14 +20,12 @@ body {
     margin-bottom: 40px;
 }
 
-/* ---- GRID KIRI – KANAN ---- */
 .form-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 40px;
 }
 
-/* ---- UPLOAD PREVIEW ---- */
 .upload-preview {
     width: 100%;
     height: 250px;
@@ -49,7 +43,6 @@ body {
     object-fit: cover;
 }
 
-/* ---- INPUT BOX ---- */
 .input-box, .textarea-box, select {
     width: 100%;
     background: #f4e8d9;
@@ -66,8 +59,6 @@ body {
     resize: none;
 }
 
-/* ---- BUTTON ---- */
-/* Tombol Upload */
 .btn-upload {
     background: #735353;
     color: #f5e9df;
@@ -77,7 +68,6 @@ body {
     border: none;
     cursor: pointer;
 
-    /* FIX PALING PENTING */
     margin-top: 20px !important;
     display: inline-block;
 }
@@ -86,7 +76,7 @@ body {
     background: #5a4242;
 }
 
-/* Tombol Submit */
+/* submit */
 .btn-submit {
     background: #735353;
     color: #f5e9df;
@@ -95,7 +85,7 @@ body {
     font-weight: bold;
     border: none;
     cursor: pointer;
-    margin-top: 30px; /* beda dari upload */
+    margin-top: 30px;
     transition: .2s;
 }
 
@@ -103,8 +93,6 @@ body {
     background: #5a4242;
 }
 
-
-/* ---- RESPONSIVE ---- */
 @media (max-width: 900px) {
     .form-grid {
         grid-template-columns: 1fr;

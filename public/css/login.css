@@ -1,9 +1,8 @@
-/* Card lebih kecil untuk login */
 .login-card {
     width: 290px;
 }
 
-/* Ikon login (svg atau png kecil) */
+/* Ikon login */
 .profile-svg {
     width: 50px;
     height: auto;
@@ -11,12 +10,12 @@
     margin: 0 auto 15px auto;
 }
 
-/* Title login */
+/* login */
 .login-title {
     font-size: 24px;
 }
 
-/* Lupa password */
+/* kalo lupa password */
 .forgot {
     display: block;
     text-align: right;

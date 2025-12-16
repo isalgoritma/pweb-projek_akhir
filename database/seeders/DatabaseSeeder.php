@@ -10,18 +10,16 @@ class DatabaseSeeder extends Seeder
 {
     use WithoutModelEvents;
 
-    /**
-     * Seed the application's database.
-     */
+
     public function run(): void
     {
-        // Seed user default
+        //pengguna default
         User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
 
-        // Panggil seeder LostItemSeeder
+        //memanggil seeder lostitem
         $this->call([
             LostItemSeeder::class,
         ]);

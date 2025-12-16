@@ -13,41 +13,56 @@ class AuthController extends Controller
     {
         $credentials = $request->only('username', 'password');
 
-        if(Auth::attempt($credentials)){
-            return redirect('/dashboard');
+        if (!Auth::attempt($credentials)) {
+            return back()->withErrors([
+                'login' => 'Username atau password salah'
+            ])->withInput();
         }
 
-        return back()->with('error', 'Username atau password salah');
+        if (!Auth::user()->is_active) {
+            Auth::logout();
+            return back()->withErrors([
+                'login' => 'Akun Anda telah dinonaktifkan, silakan hubungi admin'
+            ]);
+        }
+
+        if (Auth::user()->role === 'admin') {
+            return redirect()->route('profile');
+        }
+
+        return redirect('/dashboard');
     }
+
 
     public function registerProses(Request $request)
     {
         $request->validate([
-            'username'      => 'required',
+            'username'      => 'required|unique:users,username',
             'name'          => 'required',
             'phone_number'  => 'required|numeric|digits_between:11,13',
-            'email'         => 'required|email',
+            'email'         => 'required|email|unique:users,email',
             'password'      => 'required|min:8'
+        ], [
+            'username.unique' => 'Username sudah digunakan',
+            'email.unique'    => 'Email sudah terdaftar',
         ]);
-
 
         User::create([
-            'username' => $request->username,
-            'name'     => $request->name,
-            'phone_number' => $request->phone_number,
-            'email'    => $request->email,
-            'password' => Hash::make($request->password)
+            'username'      => $request->username,
+            'name'          => $request->name,
+            'phone_number'  => $request->phone_number,
+            'email'         => $request->email,
+            'password'      => Hash::make($request->password),
         ]);
 
-        return redirect('/login')->with('success','Akun berhasil dibuat');
+        return redirect()->route('login')
+            ->with('success', 'Akun berhasil dibuat, silakan login');
     }
+
 
     public function logout()
     {
         Auth::logout();
         return redirect('/');
     }
-
-
-
 }

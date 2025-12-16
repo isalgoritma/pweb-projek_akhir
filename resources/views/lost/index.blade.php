@@ -24,13 +24,27 @@
         <td>{{ $it->date_lost }}</td>
         <td>{{ ucfirst($it->status) }}</td>
         <td>
-          <a href="{{ route('lost.show', $it->id) }}" class="btn btn-sm btn-info">Lihat</a>
-          <a href="{{ route('lost.edit', $it->id) }}" class="btn btn-sm btn-warning">Edit</a>
-          <form action="{{ route('lost.destroy', $it->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Hapus item?')">
-            @csrf @method('DELETE')
-            <button class="btn btn-sm btn-danger">Hapus</button>
-          </form>
+            <a href="{{ route('lost.show', $it->id) }}" class="btn btn-sm btn-info">Lihat</a>
+
+            @if($it->type === 'found')
+                <a href="{{ route('verification.create', $it->id) }}"
+                    class="btn btn-sm btn-success">
+                    Verifikasi
+                </a>
+            @endif
+
+            <a href="{{ route('lost.edit', $it->id) }}" class="btn btn-sm btn-warning">Edit</a>
+
+            <form action="{{ route('lost.destroy', $it->id) }}"
+                    method="POST"
+                    class="d-inline"
+                    onsubmit="return confirm('Hapus item?')">
+                @csrf
+                @method('DELETE')
+                <button class="btn btn-sm btn-danger">Hapus</button>
+            </form>
         </td>
+
       </tr>
       @empty
       <tr><td colspan="6" class="text-center">Belum ada data</td></tr>

@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-
 class LostItemController extends Controller
 {
     public function index()
@@ -48,13 +47,12 @@ class LostItemController extends Controller
 
         LostItem::create($data);
 
-        return redirect()->route('lost.index')->with('success','Item berhasil ditambahkan');
+        return redirect()->route('lost.found.all')->with('success','Item berhasil ditambahkan');
     }
-
 
     public function allItems($kategori = null)
     {
-        // daftar kategori tetap
+        // daftar kategori tetap barang
         $categories = [
             'Elektronik',
             'Kendaraan',
@@ -63,7 +61,7 @@ class LostItemController extends Controller
             'Lainnya'
         ];
 
-        // data per kategori
+        // data per kategori barang
         $data = [];
 
         foreach ($categories as $cat) {
@@ -158,21 +156,30 @@ class LostItemController extends Controller
     public function destroy($id)
     {
         $item = LostItem::findOrFail($id);
-        if($item->image_path) Storage::disk('public')->delete($item->image_path);
+
+        if ($item->image_path) {
+            Storage::disk('public')->delete($item->image_path);
+        }
+
         $item->delete();
-        return redirect()->route('lost.index')->with('success','Item berhasil dihapus');
+
+        return redirect()
+            ->route('lost.deletePage')
+            ->with('success', 'Item berhasil dihapus');
     }
+
 
     public function deletePage()
     {
         $user = Auth::user();
 
         if ($user->role === 'admin') {
-            // admin melihat SEMUA data
+
+            // admin dapat melihat SEMUA data
             $lostItems = LostItem::where('type', 'lost')->get();
             $foundItems = LostItem::where('type', 'found')->get();
         } else {
-            // user biasa hanya melihat miliknya sendiri
+            // user hanya melihat data punya sendiri
             $lostItems = LostItem::where('type', 'lost')
                                 ->where('user_id', $user->id)
                                 ->get();
@@ -182,7 +189,11 @@ class LostItemController extends Controller
                                 ->get();
         }
 
-        return view('lost.deletepage', compact('lostItems', 'foundItems'));
+        return view('lost.deletepage', [
+            'lostItems' => $lostItems,
+            'foundItems' => $foundItems,
+        ]);
+
     }
 
 

@@ -19,7 +19,6 @@ class DashboardController extends Controller
             'Lainnya'
         ];
 
-        // convert ke format slug-ready
         $categories = collect($categories)->map(function ($cat) {
             return [
                 'name' => $cat,

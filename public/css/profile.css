@@ -1,13 +1,11 @@
-/* ====== PROFILE PAGE STYLING ====== */
-
 .profile-container {
     max-width: 900px;
-    margin: 40px auto;       /* jarak dari header */
+    margin: 40px auto;       /* jarak header */
     padding: 0 20px;
 }
 
 .profile-card {
-    background: #f4e9db;     /* krem */
+    background: #f4e9db;
     padding: 25px 40px;
     border-radius: 15px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
@@ -34,7 +32,6 @@
     opacity: 0.75;
 }
 
-/* ===== Buttons ===== */
 .profile-menu-button {
     background: #735353;
     color: white;
@@ -66,3 +63,26 @@
     .profile-btn:hover {
         background: #5e4545;
     }
+
+/* =========================
+   ADMIN PROFILE LAYOUT
+========================= */
+.admin-profile-page {
+    padding-top: 8rem;   /* atur jarak header → card admin */
+}
+
+.admin-menu {
+    max-width: 1200px;      /* ngatur lebar */
+    margin: 3rem auto;     /* jarak atas + center */;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;             /* jarak antar tombol */
+}
+
+.admin-btn {
+    padding: 18px 24px;    /* tinggi tombol */
+    max-width: 900px;           /* lebar tombol */
+    border-radius: 9999px; /* rounded-full */
+    font-size: 18px;
+    font-weight: 600;
+}

@@ -1,0 +1,145 @@
+.page-wrapper {
+    padding: 120px 80px;
+    background: #ffffff;
+}
+
+/* Search */
+.search-container {
+    text-align: center;
+    margin-bottom: 40px;
+}
+.search-input {
+    width: 420px;
+    padding: 12px 20px;
+    border: 2px solid #b28b7d;
+    border-radius: 30px;
+    background: #f7efe3;
+    color: #735353;
+    font-size: 15px;
+}
+
+/* Section */
+.main-title {
+    font-size: 26px;
+    font-weight: 700;
+    color: #735353;
+    margin-bottom: 20px;
+}
+
+.category-box{
+    background: #f8e9d7;
+    padding: 25px;
+    border-radius: 18px;
+    margin-bottom: 35px;
+    min-height: 210px; /* biar kotaknya tinggi kayak figma */
+}
+
+
+.category-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #735353;
+    margin-bottom: 15px;
+}
+
+/* Grid item */
+/* .items-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 22px;
+} */
+
+/* .items-row{
+    display: flex;
+    gap: 22px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+}
+
+/* biar scroll-nya halus + ga ada scrollbar jelek */
+/* .items-row::-webkit-scrollbar{
+    height: 8px;
+}
+.items-row::-webkit-scrollbar-thumb{
+    background: #d7b9ad;
+    border-radius: 10px;
+} */ */
+
+.items-scroll {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+}
+
+.items-scroll::-webkit-scrollbar {
+    height: 6px;
+}
+
+.items-scroll::-webkit-scrollbar-thumb {
+    background: #c8b2a3;
+    border-radius: 10px;
+}
+
+.item-card{
+    min-width: 170px;
+    max-width: 170px;
+    background: #fdf8f3;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px #00000012;
+    cursor: pointer;
+    overflow: hidden;
+    transition: 0.2s;
+    flex-shrink: 0; /* penting biar ga mengecil pas flex */
+}
+
+.item-card:hover {
+    transform: translateY(-4px);
+}
+
+.item-img {
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+    background: #eae2d7;
+}
+
+.item-info {
+    padding: 10px;
+}
+
+.item-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: #533f3f;
+}
+.item-desc {
+    font-size: 12px;
+    color: #7d6c5a;
+    margin-bottom: 5px;
+}
+
+.wa-icon {
+    font-size: 18px;
+    color: green;
+    text-decoration: none;
+}
+
+.status-icon {
+    text-align: right;
+    font-size: 20px;
+}
+
+/* Empty placeholder */
+.empty-card{
+    min-width: 170px;
+    height: 190px;
+    background: #f3e6d9;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #735353;
+    font-style: italic;
+    flex-shrink: 0;
+}

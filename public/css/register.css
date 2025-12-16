@@ -1,16 +1,7 @@
-/* Card lebih besar untuk register */
 .login-card {
     width: 300px;
     padding: 25px 35px;
 }
-
-/* Ikon register */
-/* .profile-svg {
-    width: 40px;
-    height: auto;
-    display: block;
-    margin: 0 auto 10px auto;
-} */
 
 /* judul register */
 .login-title {
@@ -20,10 +11,10 @@
 }
 
 .register-card label {
-    font-size: 13px;        /* Ukuran label */
-    font-weight: 400;       /* Ketebalan */
-    color: #5d3b3b;         /* Warna label */
-    margin-bottom: 5px;     /* Jarak label ke input */
+    font-size: 13px;
+    font-weight: 400;
+    color: #5d3b3b;
+    margin-bottom: 5px;
     display: block;
     margin-left: 14px;
     margin-right: auto;
@@ -40,8 +31,6 @@
     display: block;
 }
 
-
-/* tombol register daftar */
 .btn-register {
     width: 110px;
     padding: 8px 0;

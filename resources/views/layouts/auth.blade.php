@@ -6,14 +6,12 @@
 
     <title>@yield('title', 'UniVerse - Auth')</title>
 
-    {{-- CSS --}}
     @stack('styles')
 </head>
 
 <body style="margin:0; padding:0; overflow-x:hidden; background:#f7efe3;">
     @yield('content')
 
-    {{-- JS --}}
     @stack('scripts')
 </body>
 </html>

@@ -1,4 +1,3 @@
-/* Background Figma */
 .login-bg {
     background-color: #f7efe3;
     min-height: 100vh;
@@ -7,7 +6,7 @@
     justify-content: center;
 }
 
-/* Card umum */
+
 .login-card {
     background: white;
     padding: 35px 35px;
@@ -16,14 +15,12 @@
     text-align: center;
 }
 
-/* Title umum */
 .login-title {
     font-weight: 700;
     color: #735353;
     margin-bottom: 25px;
 }
 
-/* Label */
 label {
     display: block;
     text-align: left;
@@ -35,7 +32,6 @@ label {
     font-weight: 500;
 }
 
-/* Input */
 input {
     width: 100%;
     border: 2px solid #735353;
@@ -48,7 +44,6 @@ input {
     display: block;
 }
 
-/* Tombol */
 .btn-login,
 .btn-register {
     width: 120px;
@@ -69,7 +64,6 @@ input {
     background: #5d4646;
 }
 
-/* Link bawah */
 .login-links {
     margin-top: 10px;
     font-size: 13px;

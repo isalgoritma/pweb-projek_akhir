@@ -6,6 +6,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\LostItem;
+use App\Models\Verification;
 
 class User extends Authenticatable
 {
@@ -23,13 +25,20 @@ class User extends Authenticatable
         'phone_number',
         'email',
         'password',
+        'role',
+        'is_active',
     ];
+
 
     public function lostItems()
     {
         return $this->hasMany(LostItem::class);
     }
 
+    public function verifications()
+    {
+        return $this->hasMany(Verification::class);
+    }
 
     /**
      * The attributes that should be hidden for serialization.
@@ -51,6 +60,8 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'is_active' => 'boolean',
         ];
     }
+
 }

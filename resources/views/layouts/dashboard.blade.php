@@ -7,8 +7,9 @@
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
     <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
     <link rel="stylesheet" href="{{ asset('css/lost-create.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-    {{-- Tailwind --}}
+    {{-- tw --}}
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
@@ -33,9 +34,9 @@
             border-radius:50%;
             margin-left:6px;
         }
-        body {
+        /* body {
             background: #f8e9d7;
-        }
+        } */
     </style>
 
     @stack('styles')

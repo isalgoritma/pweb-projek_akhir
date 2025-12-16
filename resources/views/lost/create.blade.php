@@ -4,25 +4,23 @@
 
 @section('content')
 
-{{-- Pakai CSS yang sama dengan  --}}
 <link rel="stylesheet" href="{{ asset('css/lostcreate.css') }}">
 
 <div class="form-container">
 
-    {{-- Judul --}}
     <div class="form-title-box">
         <h2 class="text-2xl font-bold text-[#735353]">Form Tambah Barang Hilang</h2>
         <p class="text-[#735353] mt-1">Laporkan barang yang hilang dengan mengisi form berikut</p>
     </div>
 
-    {{-- FORM --}}
+    {{-- formnya --}}
     <form action="{{ route('lost.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <input type="hidden" name="type" value="lost">
 
         <div class="form-grid">
 
-            {{-- FOTO BARANG --}}
+            {{-- foto barang --}}
             <div>
                 <h3 class="font-semibold mb-3 text-[#735353]">Foto Barang</h3>
 
@@ -36,7 +34,7 @@
                 </label>
             </div>
 
-            {{-- DETAIL --}}
+            {{-- detail --}}
             <div>
                 <h3 class="font-semibold mb-3 text-[#735353]">Detail Barang</h3>
 
@@ -70,7 +68,6 @@
 
 </div>
 
-{{-- SCRIPT PREVIEW --}}
 <script>
 function previewImage(event) {
     let img = document.getElementById("previewImg");

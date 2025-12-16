@@ -17,7 +17,6 @@
         background: var(--white) !important;
     }
 
-    /* HERO */
     .hero-box {
         width: 100%;
         background: var(--cream);
@@ -94,7 +93,7 @@
         font-size: 20px;
     }
 
-    /* TITLE SECTION */
+    /* title section */
     .section-title {
         color: var(--brown);
         font-size: 22px;
@@ -103,7 +102,7 @@
         margin-left: 5px;
     }
 
-    /* CARD */
+    /* card */
     .kategori-card {
         width: 200px;
         height: 210px;
@@ -169,8 +168,6 @@
 
     </div>
 
-
-
 </div>
 
 <script>
@@ -190,10 +187,9 @@ document.addEventListener("DOMContentLoaded", function () {
             index++;
             setTimeout(typeEffect, 65);
         } else {
-            // Tampilkan baris kedua
+
             universeLine.classList.add("show-universe");
 
-            // Tampilkan subtitle sedikit terlambat agar lembut
             setTimeout(() => {
                 subtitle.classList.add("show-subtitle");
             }, 400);
@@ -204,6 +200,15 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 
+@php
+$categoryImages = [
+    'elektronik' => 'images/categories/elektronik.png',
+    'kendaraan'  => 'images/categories/kendaraan.png',
+    'aksesoris'  => 'images/categories/aksesoris.png',
+    'dokumen'    => 'images/categories/dokumen.png',
+    'lainnya'    => 'images/categories/lainnya.png',
+];
+@endphp
 
 {{-- BARANG HILANG --}}
 <div class="max-w-7xl mx-auto px-6 mt-10">
@@ -213,7 +218,11 @@ document.addEventListener("DOMContentLoaded", function () {
         @foreach($categories as $cat)
             <div class="kategori-card bg-[#F5EDE3] rounded-xl shadow-sm overflow-hidden">
 
-                <div class="kategori-image h-28 bg-[#EDE3D6]"></div>
+                <div class="kategori-image h-28">
+                    <img src="{{ asset($categoryImages[$cat['slug']]) }}"
+                        class="w-full h-full object-cover">
+                </div>
+
 
                 <div class="p-3">
                     <div class="font-semibold">{{ $cat['name'] }}</div>
@@ -229,7 +238,15 @@ document.addEventListener("DOMContentLoaded", function () {
     </div>
 </div>
 
-
+@php
+$categoryImages = [
+    'elektronik' => 'images/categories/Elektronik.jpg',
+    'kendaraan'  => 'images/categories/Kendaraan.jpg',
+    'aksesoris'  => 'images/categories/Aksesoris.jpg',
+    'dokumen'    => 'images/categories/Dokumen.jpg',
+    'lainnya'    => 'images/categories/Lainnya.jpg',
+];
+@endphp
 
 {{-- BARANG DITEMUKAN --}}
 <div class="max-w-7xl mx-auto px-6 mt-14">
@@ -239,7 +256,11 @@ document.addEventListener("DOMContentLoaded", function () {
         @foreach($categories as $cat)
             <div class="kategori-card bg-[#F5EDE3] rounded-xl shadow-sm overflow-hidden">
 
-                <div class="kategori-image h-28 bg-[#EDE3D6]"></div>
+                <div class="kategori-image h-28">
+                    <img src="{{ asset($categoryImages[$cat['slug']]) }}"
+                        class="w-full h-full object-cover">
+                </div>
+
 
                 <div class="p-3">
                     <div class="font-semibold">{{ $cat['name'] }}</div>

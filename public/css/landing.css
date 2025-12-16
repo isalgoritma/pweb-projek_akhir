@@ -1,4 +1,3 @@
-/* landing.css */
 html, body {
     height: 100%;
     margin:0;
@@ -6,7 +5,6 @@ html, body {
     font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
 }
 
-/* Warna background cream */
 .landing {
     background: linear-gradient(135deg, #f8e9d7 0%, #f4d7b5 100%);
     color: #5a3e1b; /* coklat tua */
@@ -16,11 +14,10 @@ html, body {
     padding: 5rem;
 }
 
-/* Tombol coklat seperti login */
 .custom-btn {
     border-radius: 30px;
     padding: 10px 28px;
-    background: #b56f2d;          /* coklat */
+    background: #b56f2d;
     border: 2px solid #b56f2d;
     color: #fff;
     transition: all .2s;
@@ -29,12 +26,11 @@ html, body {
 }
 
 .custom-btn:hover {
-    background: #8c501d;          /* coklat lebih gelap */
+    background: #8c501d;
     border-color: #8c501d;
     color: #fff;
 }
 
-/* Ilustrasi */
 .circle-img {
     width: 380px;
     animation: float 3s ease-in-out infinite;
@@ -45,21 +41,20 @@ html, body {
     50% { transform:translateY(-15px);}
 }
 
-/* Navbar transparan tapi teks coklat */
+
 .navbar {
     background: transparent !important;
 }
 
 .navbar-brand,
 .nav-link {
-    color: #5a3e1b !important;  /* coklat tua */
+    color: #5a3e1b !important;
 }
 
 .nav-link:hover {
-    color: #b56f2d !important;  /* highlight coklat */
+    color: #b56f2d !important;
 }
 
-/* tabel */
 .table > tbody > tr > td {
     vertical-align: middle;
 }

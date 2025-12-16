@@ -8,7 +8,7 @@
 
 <div class="form-container">
 
-    {{-- Judul --}}
+    {{-- {{judulnya}} --}}
     <div class="form-title-box">
         <h2 class="text-2xl font-bold text-[#735353]">Form Tambah Barang Ditemukan</h2>
         <p class="text-[#735353] mt-1">
@@ -22,7 +22,7 @@
 
         <div class="form-grid">
 
-            {{-- FOTO --}}
+            {{--foto--}}
             <div>
                 <h3 class="font-semibold mb-3 text-[#735353]">Foto Barang</h3>
 
@@ -36,7 +36,7 @@
                 </label>
             </div>
 
-            {{-- DETAIL BARANG --}}
+            {{-- detail barang --}}
             <div>
                 <h3 class="font-semibold mb-3 text-[#735353]">Detail Barang</h3>
 

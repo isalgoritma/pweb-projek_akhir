@@ -4,7 +4,8 @@
 
 @section('content')
 
-<div class="pt-12 max-w-4xl mx-auto text-center">
+<div class="max-w-4xl mx-auto text-center
+     {{ auth()->user()->role === 'admin' ? 'admin-profile-page' : 'pt-12' }}">
 
     {{-- Kartu Profil --}}
     <div class="mx-auto bg-[#f7efe3] p-6 rounded-3xl shadow-sm w-[420px] flex items-center gap-4 justify-center mb-10">
@@ -16,22 +17,60 @@
             <div class="text-xl font-semibold text-[#735353]">
                 {{ Auth::user()->username }}
             </div>
-            <div class="text-sm text-[#735353]">
-                {{ Auth::user()->email }}
-            </div>
+            @unless(auth()->user()->role === 'admin')
+                <div class="text-sm text-[#735353]">
+                    {{ Auth::user()->email }}
+                </div>
+            @endunless
+
         </div>
     </div>
 
+
     {{-- Tombol Menu --}}
-    <div class="flex flex-col gap-6">
+    @if(auth()->user()->role === 'admin')
+        <div class="admin-menu">
 
-        <a href="{{ route('profile.detailprofile') }}" class="profile-btn">Lihat Profile</a>
-        <a href="{{ route('lost.create') }}" class="profile-btn">Tambah Barang Hilang</a>
-        <a href="{{ route('found.create') }}" class="profile-btn">Tambah Barang Ditemukan</a>
-        <a href="{{ route('lost.deletePage') }}" class="profile-btn">Hapus Barang</a>
-        <a href="#" class="profile-btn">Konfirmasi Kriteria dan Barang</a>
+            <a href="{{ route('admin.users') }}"
+            class="profile-btn admin-btn">
+                Kelola Pengguna
+            </a>
 
-    </div>
+            <a href="{{ route('admin.items') }}"
+            class="profile-btn admin-btn">
+                Kelola Barang
+            </a>
+
+        </div>
+    @else
+
+        {{-- MENU USER SAJA --}}
+        <div class="flex flex-col gap-6">
+
+            <a href="{{ route('profile.detailprofile') }}" class="profile-btn">
+                Lihat Profile
+            </a>
+
+            <a href="{{ route('lost.create') }}" class="profile-btn">
+                Tambah Barang Hilang
+            </a>
+
+            <a href="{{ route('found.create') }}" class="profile-btn">
+                Tambah Barang Ditemukan
+            </a>
+
+            <a href="{{ route('lost.deletePage') }}" class="profile-btn">
+                Hapus Barang
+            </a>
+
+            <a href="{{ route('criteria.index') }}" class="profile-btn">
+                Konfirmasi Kriteria dan Barang
+            </a>
+
+        </div>
+    @endif
+
+
 
 <style>
     body {
